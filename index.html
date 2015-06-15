@@ -21,16 +21,27 @@
 	<body>
 		<div class="input">
 			<p class="title">Введите товар для добавления в список</p>
-			<input id="input_goods" title="Введите название товара"/>
+			<input autofocus size="24" id="input_goods" title="Введите название товара"/>
+		</div>
+		<br>
+		<div class="list_configuration">
+			<table cellpadding="4" cellspacing="0" border="1">
+				<tr>
+					<td colspan="0" rowspan="0" align="center">Действия над списком</td>
+				</tr>
+				<tr>
+					<td><input id="strike_out_all" type="checkbox"/>Вычеркнуть все товары</td>
+				</tr>
+				<tr>
+					<td align="center"><button id="remove_all_button">Удалить вычеркнутые</button></td>
+				</tr>
+			</table>
 		</div>
 		<div class="list">
 			<p class="title">Список товаров</p>
 			<ul id="goods_list">
 			</ul>
 		</div>
-		<script>
-		    
-		</script>
 	</body>
 </html>
 
