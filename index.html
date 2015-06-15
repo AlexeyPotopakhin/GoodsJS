@@ -12,8 +12,6 @@
 		<style>
 			body {font:12pt Arial, sans-serif;}
 			.list {float:left; width:280px;}
-  			#goods_list .ui-selecting {background:#f1d29e;}
-    		#goods_list .ui-selected {background:#f2c579; color:white;}
     		ul {list-style-type:none; margin:0; padding:0; width:300px;}
     		ul li {margin:3px; padding:3px; background-color:#fff; border:1px solid #888}
   		</style>
@@ -21,15 +19,13 @@
 	<body>
 		<div class="input">
 			<p class="title">Введите товар для добавления в список</p>
-			<input autofocus size="24" id="input_goods" title="Введите название товара"/>
+			<input autofocus id="input_goods" title="Введите название товара"/>
 		</div>
 		<br>
 		<div class="list_configuration">
-			<table cellpadding="4" cellspacing="0" border="1">
+			<table cellpadding="4" cellspacing="0" border="1" cols="2">
 				<tr>
-					<td colspan="0" rowspan="0" align="center">Действия над списком</td>
-				</tr>
-				<tr>
+					<td colspan="0" rowspan="2" align="center">Действия над списком</td>
 					<td><input id="strike_out_all" type="checkbox"/>Вычеркнуть все товары</td>
 				</tr>
 				<tr>
@@ -40,6 +36,7 @@
 		<div class="list">
 			<p class="title">Список товаров</p>
 			<ul id="goods_list">
+				
 			</ul>
 		</div>
 	</body>
