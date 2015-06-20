@@ -46,6 +46,8 @@ function addListItem(name) {
 	// Add item to the list
 	$("#goods_list").append(list_item);
 	
+	var list_ul = $("#" + list_id);
+	
 	// Remove button icon
 	$("button.remove").button( {
 		icons: {
@@ -55,19 +57,19 @@ function addListItem(name) {
 	});
 	$("button.remove").hide();
 	// Remove button visible events
-	$("#" + list_id).mouseenter({id:list_id}, function(event_object) {
+	list_ul.mouseenter({id:list_id}, function(event_object) {
 		$("#" + event_object.data.id).find("button.remove").show();
 	});
-	$("#" + list_id).mouseleave({id:list_id}, function(event_object) {
+	list_ul.mouseleave({id:list_id}, function(event_object) {
 		$("#" + event_object.data.id).find("button.remove").hide();
 	});
 	// Remove button click event
-	$("#" + list_id).find("button").click({id:list_id}, function(event_object) {
+	list_ul.find("button").click({id:list_id}, function(event_object) {
 		$("#" + event_object.data.id).remove();
 	});
 	
 	// Edit item event
-	$("#" + list_id).find("#text_cell").dblclick({id:list_id}, function(event_object) {
+	list_ul.find("#text_cell").dblclick({id:list_id}, function(event_object) {
 		var value = $("#" + event_object.data.id).find(".text").text();
 		var text_box = "<input id='change' value='" + value + "'/>";
 		
@@ -92,7 +94,7 @@ function addListItem(name) {
 	});
 	
 	// Check box event
-	$("#" + list_id).find("input:checkbox").change({id:list_id}, function(event_object) {
+	list_ul.find("input:checkbox").change({id:list_id}, function(event_object) {
 		if($(this).is(":checked")) {
 			$("#" + event_object.data.id).find(".text").attr("style", "text-decoration:line-through; opacity:0.5;");
 		}
