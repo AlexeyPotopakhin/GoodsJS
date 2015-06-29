@@ -5,8 +5,9 @@ $(document).ready(function() {
 	// Input key Enter event
 	$("#input_goods").keydown(function(event_object) {
 		if(event_object.which == 13) {
-			addListItem($("#input_goods").val());
-			$("#input_goods").val("");
+			var input_value = $("#input_goods");
+			addListItem(input_value.val());
+			input_value.val("");
 		}
 	});
 	
@@ -47,15 +48,17 @@ function addListItem(name) {
 	$("#goods_list").append(list_item);
 	
 	var list_ul = $("#" + list_id);
-	
+
+
 	// Remove button icon
-	$("button.remove").button( {
+	var remove_button = $("button.remove");
+	remove_button.button( {
 		icons: {
 			primary: "ui-icon-closethick"
 		},
 		text: false
 	});
-	$("button.remove").hide();
+	remove_button.hide();
 	// Remove button visible events
 	list_ul.mouseenter({id:list_id}, function(event_object) {
 		$("#" + event_object.data.id).find("button.remove").show();
@@ -70,24 +73,26 @@ function addListItem(name) {
 	
 	// Edit item event
 	list_ul.find("#text_cell").dblclick({id:list_id}, function(event_object) {
-		var value = $("#" + event_object.data.id).find(".text").text();
+		var list_item = $("#" + event_object.data.id);
+
+		var value = list_item.find(".text").text();
 		var text_box = "<input id='change' value='" + value + "'/>";
-		
-		$("#" + event_object.data.id).find(".text")
+
+		list_item.find(".text")
 		.replaceWith("<td width='230' class='text'>" + text_box + "</td>");
 		
 		// Keys events
-		$("#" + event_object.data.id).find("input").keydown({li_id:event_object.data.id, old_text:value}, function(event_object) {
+		list_item.find("input").keydown({old_text:value}, function(event_object) {
 			// Enter key (save text)
 			if(event_object.which == 13) {
-				var new_text = $("#" + event_object.data.li_id).find("#change").val();
-				
-				$("#" + event_object.data.li_id).find(".text")
+				var new_text = list_item.find("#change").val();
+
+				list_item.find(".text")
 				.replaceWith("<td width='230' class='text'>" + new_text + "</td>");
 			}
 			// Esc key (cancel saving)
 			else if(event_object.which == 27) {
-				$("#" + event_object.data.li_id).find(".text")
+				list_item.find(".text")
 				.replaceWith("<td width='230' class='text'>" + event_object.data.old_text + "</td>");
 			}
 		});
